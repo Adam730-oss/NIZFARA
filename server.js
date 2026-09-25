@@ -24,7 +24,18 @@ const products={
 };
 function mailer(){
  if(!process.env.SMTP_APP_PASSWORD) return null;
- return nodemailer.createTransport({service:'gmail',auth:{user:SMTP_USER,pass:process.env.SMTP_APP_PASSWORD}});
+ return nodemailer.createTransport({
+  host:'smtp.gmail.com',
+  port:465,
+  secure:true,
+  auth:{
+   user:SMTP_USER,
+   pass:process.env.SMTP_APP_PASSWORD
+  },
+  connectionTimeout:20000,
+  greetingTimeout:20000,
+  socketTimeout:20000
+ });
 }
 async function sendAdmin(order){
  const t=mailer(); if(!t) return false;
