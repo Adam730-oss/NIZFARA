@@ -2,7 +2,7 @@ const express=require('express');
 const fs=require('fs');
 const path=require('path');
 const crypto=require('crypto');
-const nodemailer=require('nodemailer');
+const { Resend } = require('resend');
 
 const app=express();
 const PORT=process.env.PORT||3000;
