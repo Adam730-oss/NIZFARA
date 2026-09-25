@@ -23,19 +23,8 @@ const products={
  bundle:{name:'NIZFARA Starter Bundle',price:199,files:['wealth-foundations.pdf','digital-product-starter.pdf']}
 };
 function mailer(){
- if(!process.env.SMTP_APP_PASSWORD) return null;
- return nodemailer.createTransport({
-  host:'smtp.gmail.com',
-  port:465,
-  secure:true,
-  auth:{
-   user:SMTP_USER,
-   pass:process.env.SMTP_APP_PASSWORD
-  },
-  connectionTimeout:20000,
-  greetingTimeout:20000,
-  socketTimeout:20000
- });
+ if(!process.env.RESEND_API_KEY) return null;
+ return new Resend(process.env.RESEND_API_KEY);
 }
 async function sendAdmin(order){
  const t=mailer(); if(!t) return false;
