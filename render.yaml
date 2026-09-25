@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: nizfara-digital-store
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: SMTP_USER
+        value: nizfara.co@gmail.com
+      - key: ADMIN_EMAIL
+        value: shihabadamamar34@gmail.com
+      - key: SMTP_APP_PASSWORD
+        sync: false
+      - key: ADMIN_SECRET
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
